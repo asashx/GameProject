@@ -29,7 +29,6 @@ public class EnemyMoveB : MonoBehaviour
             //到达终点
             if(pointIndex >= RouteBPoints.positions.Length)
             {
-                Destroy(gameObject);
                 return;
             }
             target = RouteBPoints.positions[pointIndex];

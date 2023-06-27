@@ -29,7 +29,6 @@ public class EnemyMoveC : MonoBehaviour
             //到达终点
             if(pointIndex >= RouteCPoints.positions.Length)
             {
-                Destroy(gameObject);
                 return;
             }
             target = RouteCPoints.positions[pointIndex];

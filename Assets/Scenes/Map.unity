@@ -261,6 +261,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7987122433122861292, guid: 126729ea2d24b2941acf67aade8ef61a, type: 3}
   m_PrefabInstance: {fileID: 225965931}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &117015851 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3560736580263510356, guid: 748cda9391a0af04798f666b9c3b24f2, type: 3}
+  m_PrefabInstance: {fileID: 646371626029148420}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &119838491 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7987122433122861292, guid: 126729ea2d24b2941acf67aade8ef61a, type: 3}
@@ -304,11 +309,22 @@ MonoBehaviour:
   - enemyTypes:
     - enemyPrefab: {fileID: 840507878}
       startPoint: {fileID: 194568558}
-      count: 0
+      count: 5
+      rate: 0.1
+    - enemyPrefab: {fileID: 168925509}
+      startPoint: {fileID: 1848375541}
+      count: 3
+      rate: 0.2
+  - enemyTypes:
+    - enemyPrefab: {fileID: 117015851}
+      startPoint: {fileID: 1848375541}
+      count: 3
+      rate: 0.5
+    - enemyPrefab: {fileID: 193026584}
+      startPoint: {fileID: 0}
+      count: 1
       rate: 0
-  - enemyTypes: []
-  - enemyTypes: []
-  - enemyTypes: []
+  waveRate: 5
 --- !u!4 &131636866
 Transform:
   m_ObjectHideFlags: 0
@@ -404,6 +420,11 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 7987122433122861292, guid: 126729ea2d24b2941acf67aade8ef61a, type: 3}
   m_PrefabInstance: {fileID: 883010515}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &168925509 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3560736580263510356, guid: 1016d2674c89b0343ab1d9d194c699c5, type: 3}
+  m_PrefabInstance: {fileID: 1401256198030258167}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &170228875
 PrefabInstance:
@@ -501,6 +522,11 @@ Transform:
   m_Father: {fileID: 1687135188}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &193026584 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3560736580263510356, guid: 73703fd81270a974b8b5f56a0ad3dae5, type: 3}
+  m_PrefabInstance: {fileID: 6488509246397128680}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &194568554
 GameObject:
   m_ObjectHideFlags: 0

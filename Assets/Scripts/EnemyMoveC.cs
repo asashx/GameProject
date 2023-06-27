@@ -5,8 +5,7 @@ using UnityEngine;
 public class EnemyMoveC : MonoBehaviour
 {
     Transform target;
-    public float speed = 10f;
-    public float health = 100f;
+    private float speed = 20f;
     private int pointIndex = 0;
     // Start is called before the first frame update
     void Start()
@@ -33,8 +32,24 @@ public class EnemyMoveC : MonoBehaviour
             }
             target = RouteCPoints.positions[pointIndex];
         }
+        //判断是否抵达终点
+        if(pointIndex >= RouteCPoints.positions.Length)
+        {
+            reachEnd();
+        }
 
     }
     
+    void reachEnd(){
+        GameObject.Destroy(this.gameObject);
+    }
+
+    void OnDestroy()
+    {
+        EnemySpawner.CountEnemyAlive--;
+    }
+
 }
+    
+
 

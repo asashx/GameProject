@@ -16,23 +16,32 @@ public class EnemySpawner : MonoBehaviour
 
     IEnumerator SpawnEnemy()
     {
-        foreach (Wave wave in waves)
+        foreach(Wave wave in waves)
         {
-            foreach (EnemyType enemyType in wave.enemyTypes)
+            for(int i = 0; i < wave.enemyTypes.Length; i++)
             {
-                for (int i = 0; i < enemyType.count; i++)
+                EnemyType enemyType = wave.enemyTypes[i];
+                for(int j = 0; j < enemyType.count; j++)
                 {
-                    GameObject.Instantiate(enemyType.enemyPrefab, enemyType.startPoint.position, Quaternion.identity);
-                    CountEnemyAlive++;
-                    yield return new WaitForSeconds(1f / enemyType.rate);
+                    if(enemyType.enemyPrefab != null)
+                    {
+                        GameObject.Instantiate(enemyType.enemyPrefab, enemyType.startPoint.position, Quaternion.identity);
+                        CountEnemyAlive++;
+                        if(j != enemyType.count - 1)
+                        {
+                            yield return new WaitForSeconds(enemyType.rate);
+                        }
+                    }
                 }
-                while (CountEnemyAlive > 0)
+                
+            }
+            while(CountEnemyAlive > 0)
                 {
                     yield return 0;
                 }
-                yield return new WaitForSeconds(waveRate);
-            }
+            yield return new WaitForSeconds(waveRate);
         }
+        
     }
 
 }

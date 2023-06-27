@@ -29,13 +29,28 @@ public class EnemyMoveA : MonoBehaviour
             //到达终点
             if(pointIndex >= RouteAPoints.positions.Length)
             {
-                Destroy(gameObject);
                 return;
             }
             target = RouteAPoints.positions[pointIndex];
         }
 
+        //判断是否抵达终点
+        if(pointIndex >= RouteAPoints.positions.Length)
+        {
+            reachEnd();
+        }
+
     }
     
+    void reachEnd(){
+        GameObject.Destroy(this.gameObject);
+    }
+
+    void OnDestroy(){
+        EnemySpawner.CountEnemyAlive--;
+    }
+
+
+
 }
 

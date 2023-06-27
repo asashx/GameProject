@@ -5,9 +5,9 @@ using UnityEngine;
 public class EnemyMoveA : MonoBehaviour
 {
     Transform target;
-    public float speed = 10f;
-    public float health = 100f;
+    private float speed = 20f;
     private int pointIndex = 0;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -46,11 +46,10 @@ public class EnemyMoveA : MonoBehaviour
         GameObject.Destroy(this.gameObject);
     }
 
-    void OnDestroy(){
+    void OnDestroy()
+    {
         EnemySpawner.CountEnemyAlive--;
     }
-
-
 
 }
 

@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class EnemySpawner : MonoBehaviour
 {
 
     public Wave[] waves;
     public float waveRate = 5f;
     public static int CountEnemyAlive = 0;
+    
 
     void Start()
     {
@@ -16,6 +17,7 @@ public class EnemySpawner : MonoBehaviour
 
     IEnumerator SpawnEnemy()
     {
+        yield return new WaitForSeconds(2f);
         foreach(Wave wave in waves)
         {
             for(int i = 0; i < wave.enemyTypes.Length; i++)
@@ -41,7 +43,16 @@ public class EnemySpawner : MonoBehaviour
                 }
             yield return new WaitForSeconds(waveRate);
         }
+        if (CountEnemyAlive == 0)
+        {
+            GameWin();
+        }
         
+    }
+
+    void GameWin()
+    {
+        SceneManager.LoadScene(3);
     }
 
 }

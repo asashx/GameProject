@@ -5,13 +5,15 @@ using UnityEngine;
 public class EnemyMoveB : MonoBehaviour
 {
     Transform target;
-    private float speed = 20f;
+    public float speed = 20f;
     private int pointIndex = 0;
     private float rotateSpeed = 5f;
+    private GameLives gameLives;
     // Start is called before the first frame update
     void Start()
     {
         target = RouteBPoints.positions[0];
+        gameLives = FindObjectOfType<GameLives>();
     }
 
     // Update is called once per frame
@@ -49,6 +51,7 @@ public class EnemyMoveB : MonoBehaviour
     }
     
     void reachEnd(){
+        gameLives.DecreaseLives();
         GameObject.Destroy(this.gameObject);
     }
 
@@ -56,5 +59,8 @@ public class EnemyMoveB : MonoBehaviour
     {
         EnemySpawner.CountEnemyAlive--;
     }
+    public void TakeDamage(int damage)
+    {
 
+    }
 }

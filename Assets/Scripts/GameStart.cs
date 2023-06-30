@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 public class Choosen : MonoBehaviour
 {
 
-    // Use this for initialization
     void Start()
     {
         this.GetComponent<Button>().onClick.AddListener(OnClick);
@@ -15,11 +14,7 @@ public class Choosen : MonoBehaviour
 
     void OnClick()
     {
-        SceneManager.LoadScene(0);//level1为我们要切换到的场景
+        SceneManager.LoadScene(2);
     }
 
-    void Update()
-    {
-
-    }
 }

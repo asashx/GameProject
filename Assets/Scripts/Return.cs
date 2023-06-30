@@ -7,8 +7,6 @@ using UnityEngine.SceneManagement;
 
 public class Choose : MonoBehaviour
 {
-
-    // Use this for initialization
     void Start()
     {
         this.GetComponent<Button>().onClick.AddListener(OnClick);
@@ -16,12 +14,7 @@ public class Choose : MonoBehaviour
 
     void OnClick()
     {
-        SceneManager.LoadScene(1);//level1为我们要切换到的场景
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        
+        SceneManager.LoadScene(1);
     }
 }

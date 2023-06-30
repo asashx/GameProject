@@ -5,13 +5,15 @@ using UnityEngine;
 public class EnemyMoveC : MonoBehaviour
 {
     Transform target;
-    private float speed = 20f;
+    public float speed = 5f;
     private int pointIndex = 0;
-    private float rotateSpeed = 5f;
+    private float rotateSpeed = 10f;
+    private GameLives gameLives;
     // Start is called before the first frame update
     void Start()
     {
         target = RouteCPoints.positions[0];
+        gameLives = FindObjectOfType<GameLives>();
     }
 
     // Update is called once per frame
@@ -48,12 +50,18 @@ public class EnemyMoveC : MonoBehaviour
     }
     
     void reachEnd(){
+        gameLives.DecreaseLives();
+        gameLives.DecreaseLives();
         GameObject.Destroy(this.gameObject);
     }
 
     void OnDestroy()
     {
         EnemySpawner.CountEnemyAlive--;
+    }
+    public void TakeDamage(int damage)
+    {
+
     }
 
 }

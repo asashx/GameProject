@@ -5,14 +5,15 @@ using UnityEngine.UI;
 
 public class CanvasSitting : MonoBehaviour
 {
-    public GameObject SettingPanel;     //ÉèÖÃÃæ°å
-    public bool isShow;                 //ÊÇ·ñÏÔÊ¾
-    public GameObject ControlButton;    //ÔÝÍ£/¼ÌÐøÓÎÏ·µÄ°´Å¥
-    public bool BtnState = false;       //ÔÝÍ£ÓÎÏ·°´Å¥µÄ×´Ì¬
+    public GameObject SettingPanel;     //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    public bool isShow;                 //ï¿½Ç·ï¿½ï¿½ï¿½Ê¾
+    public GameObject ControlButton;    //ï¿½ï¿½Í£/ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï·ï¿½Ä°ï¿½Å¥
+    public bool BtnState = false;       //ï¿½ï¿½Í£ï¿½ï¿½Ï·ï¿½ï¿½Å¥ï¿½ï¿½×´Ì¬
+    private float time = 0f;
 
     void Start()
     {
-        //Ñ°ÕÒ×é¼þ,×¢²áµã»÷ÊÂ¼þ
+        //Ñ°ï¿½ï¿½ï¿½ï¿½ï¿½,×¢ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½
         ControlButton.GetComponent<Button>().onClick.AddListener(ControlTime);
 
     }
@@ -22,31 +23,47 @@ public class CanvasSitting : MonoBehaviour
         SettingMenu();
     }
 
-    //ÉèÖÃÃæ°å
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     public void SettingMenu()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             isShow = !isShow;
             SettingPanel.gameObject.SetActive(isShow);
+            Time.timeScale = time;
+            time++;
+            time = time % 2;
         }
     }
-    //ÔÝÍ£ºÍ¼ÌÐøÓÎÏ·
+
+    public void Resume()
+    {
+        if(isShow != false)
+        {
+            isShow = !isShow;
+            SettingPanel.gameObject.SetActive(isShow);
+            Time.timeScale = time;
+            time++;
+            time = time % 2;
+        }
+    }
+    //ï¿½ï¿½Í£ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½Ï·
     public void ControlTime()
     {
-        //Èç¹ûµã»÷ÁË
-        if (BtnState)
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        if (!BtnState)
         {
             BtnState = false;
       
-            //½«Ê±¼äÉèÖÃÎª0,»­Ãæ»áÍ£Ö¹ÔË¶¯,Âý¶¯×÷¿ÉÒÔÉèÖÃÎª0.5f
             Time.timeScale = 1f;
+            isShow = !isShow;
+            SettingPanel.gameObject.SetActive(isShow);
         }
         else
         {
             BtnState = true;
   
-            //½«Ê±¼äÉèÖÃÎª0,»­Ãæ»áÍ£Ö¹ÔË¶¯,Âý¶¯×÷¿ÉÒÔÉèÖÃÎª0.5f
+            //ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îª0,ï¿½ï¿½ï¿½ï¿½ï¿½Í£Ö¹ï¿½Ë¶ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îª0.5f
             Time.timeScale = 0f;
         }
     }
